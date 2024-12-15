@@ -1,13 +1,20 @@
 #ifndef I2C_LCD_H
 #define I2C_LCD_H
 
-#include "stm32f1xx_hal.h"
+/**
+ * @brief Includes the HAL driver present in the project
+ */
+#if __has_include("stm32f1xx_hal.h")
+	#include "stm32f1xx_hal.h"
+#elif __has_include("stm32c0xx_hal.h")
+	#include "stm32c0xx_hal.h"
+#endif
 
 /**
  * @brief Structure to hold LCD instance information
  */
 typedef struct {
-    I2C_HandleTypeDef *hi2c;    // I2C handler for communication
+    I2C_HandleTypeDef *hi2c;     // I2C handler for communication
     uint8_t address;            // I2C address of the LCD
 } I2C_LCD_HandleTypeDef;
 
