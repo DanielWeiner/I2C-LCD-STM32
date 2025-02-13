@@ -57,7 +57,11 @@ void lcd_send_data(I2C_LCD_HandleTypeDef *lcd, char data)
 void lcd_clear(I2C_LCD_HandleTypeDef *lcd)
 {
     lcd_send_cmd(lcd, 0x80);  // Move cursor to the home position
-    for (int i = 0; i < 70; i++)
+    // Clear all characters
+    // 16x4 = 64 characters
+    // 20x4 = 80 characters
+    // So 80 character clearing is enough for both 16x2, 16x4, 20x2 and 20x5 displays
+    for (int i = 0; i < 80; i++)
     {
         lcd_send_data(lcd, ' ');  // Write a space on each position
     }
@@ -72,12 +76,18 @@ void lcd_clear(I2C_LCD_HandleTypeDef *lcd)
  */
 void lcd_gotoxy(I2C_LCD_HandleTypeDef *lcd, int col, int row)
 {
-    if (row == 0)
-        col |= 0x80;  // 1st row offset
-    else
-        col |= 0xC0;  // 2nd row offset
+    uint8_t address;
 
-    lcd_send_cmd(lcd, col);  // Send command to move the cursor
+    switch (row)
+    {
+        case 0: address = 0x80 + col; break;  // First row
+        case 1: address = 0xC0 + col; break;  // Second row
+        case 2: address = 0x94 + col; break;  // Third row
+        case 3: address = 0xD4 + col; break;  // Fourth row
+        default: return;  // Ignore invalid row numbers
+    }
+
+    lcd_send_cmd(lcd, address);  // Send command to move the cursor
 }
 
 /**
