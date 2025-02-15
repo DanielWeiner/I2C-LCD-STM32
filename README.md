@@ -121,33 +121,35 @@ int main(void) {
 
 ### Functions
 
-- **`void lcd_init(I2C_LCD_HandleTypeDef *lcd);`**
+- **Initializes the LCD display**
+```
+void lcd_init(I2C_LCD_HandleTypeDef *lcd);
+``` 
+- **Sends a command byte to the LCD**
+```
+void lcd_send_cmd(I2C_LCD_HandleTypeDef *lcd, char cmd);
+```
+- **Sends a data byte to the LCD**
+```
+void lcd_send_data(I2C_LCD_HandleTypeDef *lcd, char data)
+```
+- **Clears the display**
+```
+void lcd_clear(I2C_LCD_HandleTypeDef *lcd);
+```
+- **Sets the cursor position**
+```
+void lcd_gotoxy(I2C_LCD_HandleTypeDef *lcd, int col, int row);
+```
+- **Displays a string**
+```
+void lcd_puts(I2C_LCD_HandleTypeDef *lcd, char *str);
+```
+- **Displays a single character**
+```
+void lcd_putchar(I2C_LCD_HandleTypeDef *lcd, char ch);
+```
 
-  Initializes the LCD display.
-
-- **`void lcd_send_cmd(I2C_LCD_HandleTypeDef *lcd, char cmd);`**
-
-  Sends a command byte to the LCD.
-
-- **`void lcd_send_data(I2C_LCD_HandleTypeDef *lcd, char data);`**
-
-  Sends a data byte to the LCD.
-
-- **`void lcd_clear(I2C_LCD_HandleTypeDef *lcd);`**
-
-  Clears the display.
-
-- **`void lcd_gotoxy(I2C_LCD_HandleTypeDef *lcd, int col, int row);`**
-
-  Sets the cursor position.
-
-- **`void lcd_puts(I2C_LCD_HandleTypeDef *lcd, char *str);`**
-
-  Displays a string.
-
-- **`void lcd_putchar(I2C_LCD_HandleTypeDef *lcd, char ch);`**
-
-  Displays a single character.
 
 ## Contributing
 
