@@ -8,6 +8,8 @@
 	#include "stm32f1xx_hal.h"
 #elif __has_include("stm32c0xx_hal.h")
 	#include "stm32c0xx_hal.h"
+#elif __has_include("stm32g4xx_hal.h")
+	#include "stm32g4xx_hal.h"
 #endif
 
 /**
