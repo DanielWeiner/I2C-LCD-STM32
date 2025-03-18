@@ -165,8 +165,6 @@ Contributions are welcome! Please fork this repository and submit a pull request
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
 ## 📞 Contact
 For questions or suggestions, feel free to reach out via email:
 📧 Alixahedi@gmail.com
