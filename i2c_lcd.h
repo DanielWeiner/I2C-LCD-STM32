@@ -20,8 +20,9 @@
  * @brief Structure to hold LCD instance information
  */
 typedef struct {
-	I2C_HandleTypeDef *hi2c;	 // I2C handler for communication
-	uint8_t			   address;	 // I2C address of the LCD
+	I2C_HandleTypeDef *hi2c;	   // I2C handler for communication
+	uint8_t			   address;	   // I2C address of the LCD
+	uint8_t			   backlight;  // flag for backlight
 } I2C_LCD_HandleTypeDef;
 
 /**
@@ -71,5 +72,17 @@ void lcd_gotoxy(I2C_LCD_HandleTypeDef *lcd, int col, int row);
  * @param lcd: Pointer to the LCD handle
  */
 void lcd_clear(I2C_LCD_HandleTypeDef *lcd);
+
+/**
+ * @brief Turns off the LCD backlight
+ * @param lcd: Pointer to the LCD handle
+ */
+void lcd_backlight_off(I2C_LCD_HandleTypeDef *lcd);
+
+/**
+ * @brief Turns on the LCD backlight
+ * @param lcd: Pointer to the LCD handle
+ */
+void lcd_backlight_on(I2C_LCD_HandleTypeDef *lcd);
 
 #endif /* I2C_LCD_H */
