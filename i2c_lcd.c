@@ -154,7 +154,6 @@ void lcd_backlight_off(I2C_LCD_HandleTypeDef *lcd) {
 	// Switch off the backlight flag and send a no-op to the LCD
 	lcd->backlight = LCD_NOBACKLIGHT;
 	HAL_I2C_Master_Transmit(lcd->hi2c, lcd->address, &lcd->backlight, 1, 100);
-	HAL_Delay(5);
 }
 
 /**
@@ -165,5 +164,4 @@ void lcd_backlight_on(I2C_LCD_HandleTypeDef *lcd) {
 	// Switch on the backlight flag and send a no-op to the LCD
 	lcd->backlight = LCD_BACKLIGHT;
 	HAL_I2C_Master_Transmit(lcd->hi2c, lcd->address, &lcd->backlight, 1, 100);
-	HAL_Delay(5);
 }
